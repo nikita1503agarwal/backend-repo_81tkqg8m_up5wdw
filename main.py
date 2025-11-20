@@ -12,7 +12,7 @@ from io import BytesIO
 from PIL import Image
 
 from database import db, create_document, get_documents
-from schemas import Category, Folder, Image as ImageModel, ContactMessage
+from schemas import Category, Folder, Image as ImageModel, ContactMessage, Settings
 
 app = FastAPI(title="Perspective by Adi API")
 
@@ -67,6 +67,21 @@ def serialize_doc(doc: dict) -> dict:
 @app.get("/")
 def root():
     return {"app": "Perspective by Adi API", "status": "ok"}
+
+# Settings (single-document configuration)
+@app.get("/settings")
+def get_settings() -> dict:
+    doc = db["settings"].find_one({}) if db is not None else None
+    return serialize_doc(doc) if doc else {}
+
+@app.post("/settings")
+def upsert_settings(payload: Settings) -> dict:
+    if db is None:
+        raise HTTPException(status_code=500, detail="Database not configured")
+    data = payload.model_dump(mode="json")
+    db["settings"].update_one({}, {"$set": data}, upsert=True)
+    doc = db["settings"].find_one({})
+    return serialize_doc(doc)
 
 # Categories
 @app.get("/categories")

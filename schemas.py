@@ -29,3 +29,6 @@ class ContactMessage(BaseModel):
     message: str
     budget: Optional[str] = None
     shoot_type: Optional[str] = None
+
+class Settings(BaseModel):
+    hero_url: Optional[HttpUrl] = None
