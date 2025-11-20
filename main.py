@@ -117,6 +117,30 @@ def create_image(payload: ImageModel) -> SerializedId:
     new_id = create_document("image", payload)
     return SerializedId(id=new_id)
 
+@app.delete("/images/{image_id}")
+def delete_image(image_id: str):
+    if not ObjectId.is_valid(image_id):
+        raise HTTPException(status_code=400, detail="Invalid image id")
+    doc = db["image"].find_one({"_id": ObjectId(image_id)})
+    if not doc:
+        raise HTTPException(status_code=404, detail="Image not found")
+
+    # Try to remove local file if it was uploaded to our uploads directory
+    try:
+        url = str(doc.get("url", ""))
+        marker = "/uploads/"
+        if marker in url:
+            fname = url.split(marker, 1)[1]
+            file_path = UPLOAD_DIR / fname
+            if file_path.exists() and file_path.is_file():
+                file_path.unlink()
+    except Exception:
+        # Ignore file deletion errors, proceed to DB delete
+        pass
+
+    db["image"].delete_one({"_id": ObjectId(image_id)})
+    return {"deleted": True}
+
 # Image processing
 
 def _resize_and_compress(img: Image.Image) -> tuple[bytes, str, str]:
