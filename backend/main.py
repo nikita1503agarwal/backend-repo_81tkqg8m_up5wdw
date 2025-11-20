@@ -1,11 +1,11 @@
-from fastapi import FastAPI, HTTPException, UploadFile, File, Form, Depends
+from fastapi import FastAPI, HTTPException, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, HttpUrl
 from typing import List, Optional
 import os
 
 from database import db, create_document, get_documents, update_document, delete_documents
-from schemas import Category, Folder, Image, ContactMessage
+from schemas import Category, Folder, Image, ContactMessage, Settings
 
 app = FastAPI(title="Perspective by Adi API")
 
@@ -93,12 +93,33 @@ def contact(payload: ContactMessage):
     return {"status": "received"}
 
 
+# Settings (site-wide)
+@app.get("/settings", response_model=Settings)
+def get_settings():
+    docs = get_documents("settings")
+    if docs:
+        # Return the first settings document
+        return docs[0]
+    # Default empty settings
+    return Settings().model_dump()
+
+
+@app.post("/settings", response_model=Settings)
+def upsert_settings(payload: Settings):
+    docs = get_documents("settings")
+    data = payload.model_dump(exclude_none=True)
+    if docs:
+        # Update existing
+        update_document("settings", {"id": docs[0]["id"]}, data)
+    else:
+        create_document("settings", data)
+    # Return latest
+    latest = get_documents("settings")
+    return latest[0] if latest else Settings().model_dump()
+
+
 # Simple owner key auth for admin endpoints
 OWNER_KEY = os.getenv("OWNER_KEY", "dev-owner-key")
-
-def owner_auth(x_owner_key: str = Form(...)):
-    if x_owner_key != OWNER_KEY:
-        raise HTTPException(status_code=401, detail="Unauthorized")
 
 
 # Admin helpers
@@ -123,5 +144,3 @@ def seed(owner_key: str = Form(...)):
 
 # File upload placeholder: in this environment we'll accept direct URL uploads for simplicity.
 # In a real deployment you would integrate S3/Cloudinary. Here we store canonical URL + metadata.
-
-

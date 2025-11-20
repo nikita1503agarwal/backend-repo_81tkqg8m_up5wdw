@@ -6,6 +6,7 @@ from pydantic import BaseModel, Field, HttpUrl, EmailStr
 # - category (portraits, events, street)
 # - folder (nested folders inside categories, used mainly by events)
 # - image (media records)
+# - settings (site-wide settings like hero image)
 
 
 class User(BaseModel):
@@ -48,3 +49,7 @@ class ContactMessage(BaseModel):
     message: str
     budget: Optional[str] = None
     shoot_type: Optional[str] = Field(None, description="Portrait, Event, Street, Other")
+
+
+class Settings(BaseModel):
+    hero_url: Optional[HttpUrl] = None
