@@ -1,35 +1,33 @@
 INFO:     Will watch for changes in these directories: ['/home/workspace']
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [1013] using StatReload
-INFO:     Started server process [1015]
+INFO:     Started reloader process [1091] using StatReload
+INFO:     Started server process [1093]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     172.20.0.1:45360 - "GET /settings HTTP/1.1" 200 OK
-INFO:     172.20.0.1:45398 - "GET /images?category_slug=street&limit=1 HTTP/1.1" 200 OK
-INFO:     172.20.0.1:45390 - "GET /images?category_slug=events&limit=1 HTTP/1.1" 200 OK
-INFO:     172.20.0.1:45398 - "GET /images?category_slug=street&limit=1 HTTP/1.1" 200 OK
-INFO:     172.20.0.1:45390 - "GET /images?category_slug=events&limit=1 HTTP/1.1" 200 OK
-INFO:     172.20.0.1:45404 - "GET /images HTTP/1.1" 200 OK
-INFO:     172.20.0.1:45390 - "GET /images HTTP/1.1" 200 OK
-INFO:     172.20.0.1:45356 - "GET /categories HTTP/1.1" 200 OK
-INFO:     172.20.0.1:45404 - "GET /categories HTTP/1.1" 200 OK
-INFO:     172.20.0.1:45390 - "GET /categories HTTP/1.1" 200 OK
-INFO:     172.20.0.1:45374 - "GET /images?category_slug=portraits&limit=1 HTTP/1.1" 200 OK
-INFO:     172.20.0.1:45404 - "GET /categories HTTP/1.1" 200 OK
-INFO:     172.20.0.1:45356 - "GET /images?category_slug=portraits&limit=1 HTTP/1.1" 200 OK
-INFO:     172.20.0.1:45360 - "GET /settings HTTP/1.1" 200 OK
-INFO:     172.20.0.1:45420 - "HEAD / HTTP/1.1" 405 Method Not Allowed
-INFO:     172.20.0.1:42256 - "GET /categories HTTP/1.1" 200 OK
-INFO:     172.20.0.1:42272 - "GET /settings HTTP/1.1" 200 OK
-INFO:     172.20.0.1:42294 - "GET /images?category_slug=events&limit=1 HTTP/1.1" 200 OK
-INFO:     172.20.0.1:42284 - "GET /images?category_slug=portraits&limit=1 HTTP/1.1" 200 OK
-INFO:     172.20.0.1:42300 - "GET /images?category_slug=street&limit=1 HTTP/1.1" 200 OK
-INFO:     172.20.0.1:42256 - "GET /categories HTTP/1.1" 200 OK
-INFO:     172.20.0.1:42272 - "GET /settings HTTP/1.1" 200 OK
-INFO:     172.20.0.1:42284 - "GET /images?category_slug=portraits&limit=1 HTTP/1.1" 200 OK
-INFO:     172.20.0.1:42300 - "GET /images?category_slug=street&limit=1 HTTP/1.1" 200 OK
-INFO:     172.20.0.1:42294 - "GET /images?category_slug=events&limit=1 HTTP/1.1" 200 OK
-INFO:     172.20.0.1:42308 - "GET /categories HTTP/1.1" 200 OK
-INFO:     172.20.0.1:39142 - "GET /categories HTTP/1.1" 200 OK
-INFO:     172.20.0.1:42308 - "GET /settings HTTP/1.1" 200 OK
-INFO:     172.20.0.1:39142 - "GET /settings HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50744 - "GET /settings HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50742 - "GET /categories HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50744 - "GET /settings HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50742 - "GET /categories HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50744 - "GET /categories HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50742 - "GET /categories HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50772 - "GET /images?category_slug=street&limit=1 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50760 - "GET /images?category_slug=events&limit=1 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50750 - "GET /images?category_slug=portraits&limit=1 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50744 - "GET /images?category_slug=street&limit=1 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50772 - "GET /images?category_slug=events&limit=1 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50778 - "GET /images HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50760 - "GET /images?category_slug=portraits&limit=1 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50792 - "GET /f421d928b9b34fec945c7dc96e294ff0.jpg HTTP/1.1" 304 Not Modified
+INFO:     172.20.0.1:50792 - "GET /0d126695e2334d14943028c9e20dfbc4.jpg HTTP/1.1" 304 Not Modified
+INFO:     172.20.0.1:50750 - "GET /images HTTP/1.1" 200 OK
+INFO:     172.20.0.1:50814 - "HEAD / HTTP/1.1" 405 Method Not Allowed
+INFO:     172.20.0.1:46498 - "GET /images?category_slug=portraits&limit=1 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:46506 - "GET /images?category_slug=events&limit=1 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:46508 - "GET /images?category_slug=street&limit=1 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:46498 - "GET /images?category_slug=portraits&limit=1 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:46506 - "GET /images?category_slug=events&limit=1 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:46508 - "GET /images?category_slug=street&limit=1 HTTP/1.1" 200 OK
+INFO:     172.20.0.1:46494 - "GET /settings HTTP/1.1" 200 OK
+INFO:     172.20.0.1:46488 - "GET /categories HTTP/1.1" 200 OK
+INFO:     172.20.0.1:46494 - "GET /categories HTTP/1.1" 200 OK
+INFO:     172.20.0.1:46522 - "GET /settings HTTP/1.1" 200 OK
